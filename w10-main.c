@@ -11,8 +11,8 @@ void *goldcount(void *args){
 int main(int argc, char *argv[]){
     pthread_t threads[5] = {0};
     pthread_create(&threads[0], NULL, goldcount, (void *)0);
+    return 0;
 
     pthread_join(threads[0], NULL);
     printf("main: hello\n");
-    return 0;
 }
