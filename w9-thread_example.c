@@ -5,19 +5,19 @@
 
 void *multiply(void *arg)
 {
-    int *p = (int *)arg;
-    printf("%d: Hello-a:%d\n",pthread_self(), *p);
+    int *pi = (int *)arg;
+    printf("%d: Hello-i:%ld\n",pthread_self(), *pi);
     pthread_exit(0);
 }
 
 int main(void)
 {
     pthread_t thread[NUM_THREADS];
-    int a = 5;
+    long a = 5;
 
     for (int i = 0; i < NUM_THREADS; i++)
     {
-        pthread_create(&thread[i], NULL, multiply, &a);
+        pthread_create(&thread[i], NULL, multiply, &i);
     }
 
     for (int i = 0; i < NUM_THREADS; i++)
