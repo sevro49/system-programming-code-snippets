@@ -5,8 +5,8 @@
 
 void *multiply(void *arg)
 {
-    int *pi = (int *)arg;
-    printf("%d: Hello-i:%ld\n",pthread_self(), *pi);
+    int id = (int)arg;
+    printf("%d: Hello-i:%ld\n",pthread_self(), id);
     pthread_exit(0);
 }
 
@@ -17,7 +17,7 @@ int main(void)
 
     for (int i = 0; i < NUM_THREADS; i++)
     {
-        pthread_create(&thread[i], NULL, multiply, &i);
+        pthread_create(&thread[i], NULL, multiply, i);
     }
 
     for (int i = 0; i < NUM_THREADS; i++)
